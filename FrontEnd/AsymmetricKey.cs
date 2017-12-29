@@ -19,13 +19,15 @@ namespace FrontEnd
             PublicKey = new KeyModel
             {
                 KeyCreationTimestamp = DateTime.Now,
-                KeyType = KeyType.PublicAsymmetric
+                KeyType = KeyType.PublicAsymmetric,
+                Key = "Generating new key..."
             };
 
             PrivateKey = new KeyModel
             {
                 KeyCreationTimestamp = DateTime.Now,
-                KeyType = KeyType.PrivateAsymmetric
+                KeyType = KeyType.PrivateAsymmetric,
+                Key = "Generating new key..."
             };
 
             _keyManager.GenerateAsymmetricKeys()

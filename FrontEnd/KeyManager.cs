@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrontEnd.Contracts;
 using FrontEnd.Models;
+using FrontEnds;
 using Unity;
 
 namespace FrontEnd
@@ -32,9 +33,16 @@ namespace FrontEnd
                 }
             };
 
-            btnNewSymmKey.Click += (obj, args) =>
+            btnNewSymmKey.Click += async (obj, args) =>
             {
-                //TODO: open SymForm
+                using (var frm = Program.Container.Resolve<SymmertricKey>())
+                {
+                    if (frm.ShowDialog() != DialogResult.OK)
+                        return;
+
+                    await _settingsManager.AppendKeys(new[] { frm.SymmKey })
+                        .ContinueWith(async tsk => await BindKeys(await tsk));
+                }
             };
 
             btnDeleteKey.Click += async (obj, args) =>
