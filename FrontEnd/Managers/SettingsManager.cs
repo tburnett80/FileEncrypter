@@ -50,12 +50,7 @@ namespace FrontEnd.Managers
         public async Task<IEnumerable<KeyModel>> RemoveKey(KeyModel model)
         {
             var settings = await GetSettings();
-
-            settings.Keys = settings.Keys.ToList().Where(k => 
-                !k.Name.Equals(model.Name) &&
-                !k.Key.Equals(model.Key) &&
-                !k.KeyType.Equals(model.KeyType) &&
-                !k.KeyLength.Equals(model.KeyLength));
+            settings.Keys = settings.Keys.ToList().Where(k => !k.Id.Equals(model.Id));
 
             return await SaveSettings(settings)
                 .ContinueWith(tsk => tsk.Result.Keys);

@@ -36,9 +36,9 @@ namespace FrontEnd
                 var symmSelected = (dynamic)cmbSym.SelectedItem;
 
                 if (rbEncrypt.Checked)
-                    Encrypt(txtInFile.Text, txtOutFile.Text, symmSelected.Id, await _settingsManager.GetSettings());
+                    await Encrypt(txtInFile.Text, txtOutFile.Text, symmSelected.Id, await _settingsManager.GetSettings());
                 else
-                    Decrypt(txtInFile.Text, txtOutFile.Text, symmSelected.Id, await _settingsManager.GetSettings());
+                    await Decrypt(txtInFile.Text, txtOutFile.Text, symmSelected.Id, await _settingsManager.GetSettings());
             };
 
             btnGen.Click += (obj, args) =>
