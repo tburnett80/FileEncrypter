@@ -4,6 +4,10 @@ namespace FrontEnd.Models
 {
     public sealed class KeyModel
     {
+        public Guid Id { get; set; }
+
+        public Guid AssociatedKey { get; set; }
+
         public string Name { get; set; }
 
         public string Description { get; set; }

@@ -7,12 +7,14 @@ using FrontEnd.Contracts;
 using FrontEnd.Models;
 using FrontEnds;
 using Unity;
+using Unity.Resolution;
 
 namespace FrontEnd
 {
     public partial class KeyManager : Form
     {
         private readonly ISettingsManager _settingsManager;
+        private KeyModel _selected;
 
         public KeyManager(ISettingsManager settingsManager)
         {
@@ -47,26 +49,51 @@ namespace FrontEnd
 
             btnDeleteKey.Click += async (obj, args) =>
             {
-                var selected = (KeyModel)lstKeys.SelectedItem;
-                if (selected == null)
+                if (_selected == null)
                     return;
 
-                await _settingsManager.RemoveKey(selected)
+                await _settingsManager.RemoveKey(_selected)
                     .ContinueWith(async tsk => await BindKeys(await tsk));
+
+                ClearForm();
+            };
+
+            btnImport.Click += async (obj, args) =>
+            {
+                using (var frm = Program.Container.Resolve<ImportKey>())
+                {
+                    if (frm.ShowDialog() != DialogResult.OK)
+                        return;
+
+                    await _settingsManager.AppendKeys(new[] { frm.KeyFinal })
+                        .ContinueWith(async tsk => await BindKeys(await tsk));
+                }
+            };
+
+            btnExport.Click += (obj, args) =>
+            {
+                using (var frm = Program.Container.Resolve<ExportKey>(new ParameterOverride("key", _selected )))
+                {
+                    frm.ShowDialog();
+                }
             };
 
             lstKeys.SelectedIndexChanged += (obj, args) =>
             {
-                var selected = (KeyModel) lstKeys.SelectedItem;
-                if(selected == null)
+                _selected = (KeyModel) lstKeys.SelectedItem;
+                if (_selected == null)
+                {
+                    btnExport.Enabled = false;
                     return;
+                }
 
-                txtKey.Text = selected.Key;
-                txtKeyDesc.Text = selected.Description;
-                txtKeyName.Text = selected.Name;
-                txtKeyLen.Text = selected.KeyLength.ToString();
-                txtKeyType.Text = selected.KeyType.ToString();
-                txtTimestamp.Text = selected.KeyCreationTimestamp.ToString("yyyy-MM-dd HH:mm:ss");
+                btnExport.Enabled = true;
+                txtKey.Text = _selected.Key;
+                txtKeyDesc.Text = _selected.Description;
+                txtKeyName.Text = _selected.Name;
+                txtKeyLen.Text = _selected.KeyLength.ToString();
+                txtKeyType.Text = _selected.KeyType.ToString();
+                txtTimestamp.Text = _selected.KeyCreationTimestamp.ToString("yyyy-MM-dd HH:mm:ss");
             };
         }
 
@@ -97,6 +124,16 @@ namespace FrontEnd
 
                     lstKeys.SelectedIndex = 0;
                 });
+        }
+
+        private void ClearForm()
+        {
+            txtKey.Clear();
+            txtKeyDesc.Clear();
+            txtKeyName.Clear();
+            txtKeyLen.Clear();
+            txtKeyType.Clear();
+            txtTimestamp.Clear();
         }
     }
 }

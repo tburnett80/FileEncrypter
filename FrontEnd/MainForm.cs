@@ -1,12 +1,11 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Crypto.Core.Lib.Contracts;
 using FrontEnd.Contracts;
 using FrontEnd.Models;
-using Newtonsoft.Json;
 using Unity;
 
 namespace FrontEnd
@@ -16,19 +15,13 @@ namespace FrontEnd
         private readonly ICryptoManager _cryptoManager;
         private readonly ISettingsManager _settingsManager;
 
-
-        private SettingsModel _settings;
-        private readonly object _settingsLock = new object();
-        private readonly string _settingsName = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\Settings.json";
-
         public MainForm(ISettingsManager settingsManager, ICryptoManager cryptoManager)
         {
             _settingsManager = settingsManager ?? throw new ArgumentNullException(nameof(cryptoManager));
             _cryptoManager = cryptoManager ?? throw new ArgumentNullException(nameof(cryptoManager));
 
-            //var settingTsk = _settingsManager.ReadSettings();
-
             InitializeComponent();
+            PopulateDrops();
 
             rbEncrypt.CheckedChanged += (obj, args) =>
             {
@@ -38,50 +31,113 @@ namespace FrontEnd
                     : rbDecrypt.Text;
             };
 
-            btnSymAction.Click += (obj, args) =>
+            btnSymAction.Click += async (obj, args) =>
             {
-                //TODO: impl sym encrypt / decrpyt
+                var symmSelected = (dynamic)cmbSym.SelectedItem;
+
+                if (rbEncrypt.Checked)
+                    Encrypt(txtInFile.Text, txtOutFile.Text, symmSelected.Id, await _settingsManager.GetSettings());
+                else
+                    Decrypt(txtInFile.Text, txtOutFile.Text, symmSelected.Id, await _settingsManager.GetSettings());
             };
 
             btnGen.Click += (obj, args) =>
             {
                 using (var keyMgrForm = Program.Container.Resolve<KeyManager>())
                 {
-                    keyMgrForm.ShowDialog();
+                    if(keyMgrForm.ShowDialog() != null)
+                        PopulateDrops();
+                }
+            };
+
+            txtInFile.Click += (obj, args) =>
+            {
+                if(txtInFile.Text.TryTrim().Length > 0)
+                    return;
+
+                var ofd = new OpenFileDialog
+                {
+                    InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                    CheckFileExists = true,
+                    CheckPathExists = true
+                };
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    var fi = new FileInfo(ofd.FileName);
+                    txtInFile.Text = ofd.FileName;
+                    txtOutFile.Text = $"{fi.FullName.Replace(fi.Extension, "")}.enc{fi.Extension}";
+                }
+            };
+
+            txtOutFile.Click += (obj, args) =>
+            {
+                if (txtOutFile.Text.TryTrim().Length > 0)
+                    return;
+
+                var ofd = new OpenFileDialog
+                {
+                    InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                    CheckFileExists = true,
+                    CheckPathExists = true
+                };
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    txtOutFile.Text = ofd.FileName;
                 }
             };
 
             rbEncrypt.Checked = true;
-
-            //settingTsk.Wait();
-            //_settings = settingTsk.Result;
         }
 
-        #region Settings Management
-        private void SaveSettings()
+        private async Task PopulateDrops()
         {
-            lock (_settingsLock)
+            await _settingsManager.GetSettings()
+                .ContinueWith(async tsk =>
+                {
+                    var set = await tsk;
+                    var symm = set.Keys.Where(k => k.KeyType == KeyType.Symmetric)
+                                       .Select(ks => new { ks.Name, ks.Id })
+                                       .ToList();
+
+                    Invoke((MethodInvoker)delegate
+                    {
+                        cmbSym.DataSource = symm;
+                        cmbSym.DisplayMember = "Name";
+                        cmbSym.ValueMember = "Id";
+                    });
+                });
+        }
+
+        private async Task Encrypt(string inFile, string outFile, Guid symKeyId,  SettingsModel settings)
+        {
+            using (var fsOpen = File.Open(inFile, FileMode.Open))
+            using (var fsWrite = File.Open(outFile, FileMode.Create))
             {
-                var settings = JsonConvert.SerializeObject(_settings, Formatting.None);
-                File.WriteAllBytes(_settingsName, Encoding.UTF8.GetBytes(settings));
+                var symm = settings.Keys.FirstOrDefault(k => k.Id == symKeyId);
+                var pub = settings.Keys.FirstOrDefault(k => k.Id == symm?.AssociatedKey);
+                var priv = settings.Keys.FirstOrDefault(k => k.Id == pub?.AssociatedKey);
+
+                ttMain.Show("Encryption started...", rbEncrypt, 2000);
+                await _cryptoManager.EncryptStream(fsOpen, fsWrite, priv?.Key, symm?.Key)
+                    .ContinueWith(tsk => MessageBox.Show("Encryption Complete.", "Encryption Complete.", MessageBoxButtons.OK, MessageBoxIcon.Information));
             }
         }
 
-        private void LoadSettings()
+        private async Task Decrypt(string inFile, string outFile, Guid symKeyId, SettingsModel settings)
         {
-            lock (_settingsLock)
+            using (var fsOpen = File.Open(inFile, FileMode.Open))
+            using (var fsWrite = File.Open(outFile, FileMode.Create))
             {
-                if (File.Exists(_settingsName))
-                {
-                    var json = File.ReadAllBytes(_settingsName);
-                    _settings = JsonConvert.DeserializeObject<SettingsModel>(Encoding.UTF8.GetString(json));
-                }
-                else
-                {
-                    _settings = new SettingsModel();
-                }
+                var symm = settings.Keys.FirstOrDefault(k => k.Id == symKeyId);
+                var pub = settings.Keys.FirstOrDefault(k => k.Id == symm?.AssociatedKey);
+                var priv = settings.Keys.FirstOrDefault(k => k.Id == pub?.AssociatedKey);
+
+                ttMain.Show("Decryption started...", rbEncrypt, 2000);
+                await _cryptoManager.DecryptStream(fsOpen, fsWrite, priv.Key, symm.Key)
+                    .ContinueWith(tsk => MessageBox.Show("Decryption Complete.", "Decryption Complete.", MessageBoxButtons.OK, MessageBoxIcon.Information));
             }
         }
-        #endregion
     }
 }

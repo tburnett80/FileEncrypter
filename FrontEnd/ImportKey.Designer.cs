@@ -1,6 +1,6 @@
 ﻿namespace FrontEnd
 {
-    partial class KeyManager
+    partial class ImportKey
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lstKeys = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnDeleteKey = new System.Windows.Forms.Button();
             this.txtKeyType = new System.Windows.Forms.TextBox();
             this.txtTimestamp = new System.Windows.Forms.TextBox();
             this.txtKeyLen = new System.Windows.Forms.TextBox();
@@ -43,34 +40,19 @@
             this.txtKeyDesc = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtKeyName = new System.Windows.Forms.TextBox();
-            this.btnNewSymmKey = new System.Windows.Forms.Button();
-            this.btnNewAsymmKey = new System.Windows.Forms.Button();
-            this.btnImport = new System.Windows.Forms.Button();
-            this.btnExport = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtInKey = new System.Windows.Forms.TextBox();
+            this.btnParse = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lstKeys
-            // 
-            this.lstKeys.FormattingEnabled = true;
-            this.lstKeys.ItemHeight = 16;
-            this.lstKeys.Location = new System.Drawing.Point(21, 14);
-            this.lstKeys.Name = "lstKeys";
-            this.lstKeys.Size = new System.Drawing.Size(277, 436);
-            this.lstKeys.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Key Name";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnDeleteKey);
             this.groupBox1.Controls.Add(this.txtKeyType);
             this.groupBox1.Controls.Add(this.txtTimestamp);
             this.groupBox1.Controls.Add(this.txtKeyLen);
@@ -83,21 +65,12 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtKeyName);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(323, 14);
+            this.groupBox1.Location = new System.Drawing.Point(432, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(351, 436);
-            this.groupBox1.TabIndex = 2;
+            this.groupBox1.Size = new System.Drawing.Size(351, 391);
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Key Details";
-            // 
-            // btnDeleteKey
-            // 
-            this.btnDeleteKey.Location = new System.Drawing.Point(18, 389);
-            this.btnDeleteKey.Name = "btnDeleteKey";
-            this.btnDeleteKey.Size = new System.Drawing.Size(94, 29);
-            this.btnDeleteKey.TabIndex = 14;
-            this.btnDeleteKey.Text = "Delete";
-            this.btnDeleteKey.UseVisualStyleBackColor = true;
             // 
             // txtKeyType
             // 
@@ -196,83 +169,113 @@
             this.txtKeyName.Size = new System.Drawing.Size(239, 22);
             this.txtKeyName.TabIndex = 2;
             // 
-            // btnNewSymmKey
+            // label1
             // 
-            this.btnNewSymmKey.Location = new System.Drawing.Point(21, 473);
-            this.btnNewSymmKey.Name = "btnNewSymmKey";
-            this.btnNewSymmKey.Size = new System.Drawing.Size(174, 34);
-            this.btnNewSymmKey.TabIndex = 3;
-            this.btnNewSymmKey.Text = "New Symmetric Key";
-            this.btnNewSymmKey.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 17);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Key Name";
             // 
-            // btnNewAsymmKey
+            // groupBox2
             // 
-            this.btnNewAsymmKey.Location = new System.Drawing.Point(212, 473);
-            this.btnNewAsymmKey.Name = "btnNewAsymmKey";
-            this.btnNewAsymmKey.Size = new System.Drawing.Size(174, 34);
-            this.btnNewAsymmKey.TabIndex = 4;
-            this.btnNewAsymmKey.Text = "New Asymmetric Key";
-            this.btnNewAsymmKey.UseVisualStyleBackColor = true;
+            this.groupBox2.Controls.Add(this.txtInKey);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(414, 340);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Key Importing";
             // 
-            // btnImport
+            // label7
             // 
-            this.btnImport.Location = new System.Drawing.Point(406, 473);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(109, 34);
-            this.btnImport.TabIndex = 5;
-            this.btnImport.Text = "Import Key";
-            this.btnImport.UseVisualStyleBackColor = true;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(33, 30);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(123, 17);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Incoming Key Text";
             // 
-            // btnExport
+            // txtInKey
             // 
-            this.btnExport.Location = new System.Drawing.Point(541, 473);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(100, 34);
-            this.btnExport.TabIndex = 6;
-            this.btnExport.Text = "Export Key";
-            this.btnExport.UseVisualStyleBackColor = true;
+            this.txtInKey.Location = new System.Drawing.Point(6, 53);
+            this.txtInKey.Multiline = true;
+            this.txtInKey.Name = "txtInKey";
+            this.txtInKey.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtInKey.Size = new System.Drawing.Size(402, 281);
+            this.txtInKey.TabIndex = 1;
             // 
-            // KeyManager
+            // btnParse
+            // 
+            this.btnParse.Location = new System.Drawing.Point(18, 359);
+            this.btnParse.Name = "btnParse";
+            this.btnParse.Size = new System.Drawing.Size(90, 35);
+            this.btnParse.TabIndex = 5;
+            this.btnParse.Text = "Parse Key";
+            this.btnParse.UseVisualStyleBackColor = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(129, 359);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(90, 35);
+            this.btnSave.TabIndex = 6;
+            this.btnSave.Text = "Save Key";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(238, 359);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(90, 35);
+            this.btnClear.TabIndex = 7;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            // 
+            // ImportKey
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(686, 519);
-            this.Controls.Add(this.btnExport);
-            this.Controls.Add(this.btnImport);
-            this.Controls.Add(this.btnNewAsymmKey);
-            this.Controls.Add(this.btnNewSymmKey);
+            this.ClientSize = new System.Drawing.Size(795, 419);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnParse);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lstKeys);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "KeyManager";
-            this.Text = "Key Management";
+            this.Name = "ImportKey";
+            this.Text = "Import Key";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListBox lstKeys;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtKeyName;
-        private System.Windows.Forms.TextBox txtKeyDesc;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtKey;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtKeyType;
+        private System.Windows.Forms.TextBox txtTimestamp;
         private System.Windows.Forms.TextBox txtKeyLen;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtTimestamp;
-        private System.Windows.Forms.TextBox txtKeyType;
-        private System.Windows.Forms.Button btnDeleteKey;
-        private System.Windows.Forms.Button btnNewSymmKey;
-        private System.Windows.Forms.Button btnNewAsymmKey;
-        private System.Windows.Forms.Button btnImport;
-        private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtKey;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtKeyDesc;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtKeyName;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txtInKey;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnParse;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnClear;
     }
 }

@@ -49,6 +49,8 @@ namespace FrontEnd
             container.RegisterType<ICryptoManager, CryptoManager>(new ContainerControlledLifetimeManager());
             container.RegisterType<ISettingsManager, SettingsManager>(new ContainerControlledLifetimeManager());
 
+            container.RegisterType<ImportKey>(new PerResolveLifetimeManager());
+            container.RegisterType<ExportKey>(new PerResolveLifetimeManager());
             container.RegisterType<AsymmetricKey>(new PerResolveLifetimeManager());
             container.RegisterType<SymmertricKey>(new PerResolveLifetimeManager());
             container.RegisterType<KeyManager>(new PerResolveLifetimeManager());

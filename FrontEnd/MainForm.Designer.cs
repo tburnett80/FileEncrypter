@@ -28,27 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnGen = new System.Windows.Forms.Button();
             this.rbDecrypt = new System.Windows.Forms.RadioButton();
             this.rbEncrypt = new System.Windows.Forms.RadioButton();
             this.btnSymAction = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cmbAsym = new System.Windows.Forms.ComboBox();
             this.cmbSym = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtOutFile = new System.Windows.Forms.TextBox();
             this.txtInFile = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.ttMain = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnGen
             // 
-            this.btnGen.Location = new System.Drawing.Point(655, 330);
+            this.btnGen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGen.Location = new System.Drawing.Point(653, 258);
             this.btnGen.Name = "btnGen";
             this.btnGen.Size = new System.Drawing.Size(143, 36);
             this.btnGen.TabIndex = 9;
@@ -58,9 +59,10 @@
             // rbDecrypt
             // 
             this.rbDecrypt.AutoSize = true;
-            this.rbDecrypt.Location = new System.Drawing.Point(143, 30);
+            this.rbDecrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbDecrypt.Location = new System.Drawing.Point(159, 24);
             this.rbDecrypt.Name = "rbDecrypt";
-            this.rbDecrypt.Size = new System.Drawing.Size(78, 21);
+            this.rbDecrypt.Size = new System.Drawing.Size(89, 24);
             this.rbDecrypt.TabIndex = 7;
             this.rbDecrypt.Text = "Decrypt";
             this.rbDecrypt.UseVisualStyleBackColor = true;
@@ -68,16 +70,18 @@
             // rbEncrypt
             // 
             this.rbEncrypt.AutoSize = true;
-            this.rbEncrypt.Location = new System.Drawing.Point(227, 30);
+            this.rbEncrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbEncrypt.Location = new System.Drawing.Point(276, 24);
             this.rbEncrypt.Name = "rbEncrypt";
-            this.rbEncrypt.Size = new System.Drawing.Size(77, 21);
+            this.rbEncrypt.Size = new System.Drawing.Size(87, 24);
             this.rbEncrypt.TabIndex = 6;
             this.rbEncrypt.Text = "Encrypt";
             this.rbEncrypt.UseVisualStyleBackColor = true;
             // 
             // btnSymAction
             // 
-            this.btnSymAction.Location = new System.Drawing.Point(24, 330);
+            this.btnSymAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSymAction.Location = new System.Drawing.Point(18, 258);
             this.btnSymAction.Name = "btnSymAction";
             this.btnSymAction.Size = new System.Drawing.Size(93, 36);
             this.btnSymAction.TabIndex = 5;
@@ -86,50 +90,34 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.cmbAsym);
             this.groupBox2.Controls.Add(this.cmbSym);
-            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.rbEncrypt);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.rbDecrypt);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 147);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(799, 163);
+            this.groupBox2.Size = new System.Drawing.Size(799, 105);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Encryption Details";
             // 
-            // cmbAsym
-            // 
-            this.cmbAsym.FormattingEnabled = true;
-            this.cmbAsym.Location = new System.Drawing.Point(7, 116);
-            this.cmbAsym.Name = "cmbAsym";
-            this.cmbAsym.Size = new System.Drawing.Size(779, 24);
-            this.cmbAsym.TabIndex = 10;
-            // 
             // cmbSym
             // 
+            this.cmbSym.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSym.FormattingEnabled = true;
             this.cmbSym.Location = new System.Drawing.Point(7, 57);
             this.cmbSym.Name = "cmbSym";
-            this.cmbSym.Size = new System.Drawing.Size(777, 24);
+            this.cmbSym.Size = new System.Drawing.Size(777, 33);
             this.cmbSym.TabIndex = 9;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 96);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 17);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Asymmetric Key";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 32);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(9, 26);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 17);
+            this.label5.Size = new System.Drawing.Size(122, 20);
             this.label5.TabIndex = 2;
             this.label5.Text = "Symmetric Key";
             // 
@@ -139,6 +127,7 @@
             this.groupBox1.Controls.Add(this.txtInFile);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(799, 129);
@@ -148,16 +137,18 @@
             // 
             // txtOutFile
             // 
+            this.txtOutFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOutFile.Location = new System.Drawing.Point(6, 95);
             this.txtOutFile.Name = "txtOutFile";
-            this.txtOutFile.Size = new System.Drawing.Size(778, 22);
+            this.txtOutFile.Size = new System.Drawing.Size(778, 30);
             this.txtOutFile.TabIndex = 3;
             // 
             // txtInFile
             // 
+            this.txtInFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInFile.Location = new System.Drawing.Point(6, 38);
             this.txtInFile.Name = "txtInFile";
-            this.txtInFile.Size = new System.Drawing.Size(778, 22);
+            this.txtInFile.Size = new System.Drawing.Size(778, 30);
             this.txtInFile.TabIndex = 2;
             // 
             // label3
@@ -165,7 +156,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(22, 18);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 17);
+            this.label3.Size = new System.Drawing.Size(77, 20);
             this.label3.TabIndex = 0;
             this.label3.Text = "File input";
             // 
@@ -174,7 +165,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(22, 75);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 17);
+            this.label4.Size = new System.Drawing.Size(87, 20);
             this.label4.TabIndex = 1;
             this.label4.Text = "File output";
             // 
@@ -182,11 +173,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(831, 373);
+            this.ClientSize = new System.Drawing.Size(831, 307);
             this.Controls.Add(this.btnGen);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSymAction);
             this.Controls.Add(this.groupBox2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainForm";
             this.Text = "File Encryptor";
             this.groupBox2.ResumeLayout(false);
@@ -209,9 +202,8 @@
         private System.Windows.Forms.RadioButton rbEncrypt;
         private System.Windows.Forms.Button btnSymAction;
         private System.Windows.Forms.Button btnGen;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbSym;
-        private System.Windows.Forms.ComboBox cmbAsym;
+        private System.Windows.Forms.ToolTip ttMain;
     }
 }
 

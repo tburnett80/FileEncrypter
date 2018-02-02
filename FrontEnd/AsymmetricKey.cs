@@ -33,11 +33,16 @@ namespace FrontEnd
             _keyManager.GenerateAsymmetricKeys()
                 .ContinueWith(tsk =>
                 {
+                    PublicKey.Id = Guid.NewGuid();
+                    PrivateKey.Id = Guid.NewGuid();
+                    PublicKey.AssociatedKey = PrivateKey.Id;
+                    PrivateKey.AssociatedKey = PublicKey.Id;
+
                     PublicKey.Key = tsk.Result[AsymmetricKeyType.Public];
                     PrivateKey.Key = tsk.Result[AsymmetricKeyType.Private];
 
-                    PublicKey.KeyLength = Convert.FromBase64String(PublicKey.Key).Length;
-                    PrivateKey.KeyLength = Convert.FromBase64String(PrivateKey.Key).Length;
+                    PublicKey.KeyLength = PublicKey.Key.FromBase64().Length;
+                    PrivateKey.KeyLength = PrivateKey.Key.FromBase64().Length;
 
                     BindModel(PublicKey);
                     BindModel(PrivateKey);
@@ -97,8 +102,9 @@ namespace FrontEnd
             {
                 Invoke((MethodInvoker)delegate
                 {
-                    nameCtrl.Text = model.Name;
-                    descCtrl.Text = model.Description;
+                    
+                    nameCtrl.Text = model.Name?.Length > 0 ? model.Name : nameCtrl.Text;
+                    descCtrl.Text = model.Description?.Length > 0 ? model.Description : descCtrl.Text;
                     keyCtrl.Text = model.Key;
                     keyLenCtrl.Text = model.KeyLength.ToString();
                     keyTypeCtrl.Text = model.KeyType.ToString();
@@ -107,8 +113,8 @@ namespace FrontEnd
             }
             else
             {
-                nameCtrl.Text = model.Name;
-                descCtrl.Text = model.Description;
+                nameCtrl.Text = model.Name?.Length > 0 ? model.Name : nameCtrl.Text;
+                descCtrl.Text = model.Description?.Length > 0 ? model.Description : descCtrl.Text;
                 keyCtrl.Text = model.Key;
                 keyLenCtrl.Text = model.KeyLength.ToString();
                 keyTypeCtrl.Text = model.KeyType.ToString();
