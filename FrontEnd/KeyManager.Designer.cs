@@ -52,11 +52,12 @@
             // 
             // lstKeys
             // 
+            this.lstKeys.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstKeys.FormattingEnabled = true;
-            this.lstKeys.ItemHeight = 16;
+            this.lstKeys.ItemHeight = 20;
             this.lstKeys.Location = new System.Drawing.Point(21, 14);
             this.lstKeys.Name = "lstKeys";
-            this.lstKeys.Size = new System.Drawing.Size(277, 436);
+            this.lstKeys.Size = new System.Drawing.Size(277, 424);
             this.lstKeys.TabIndex = 0;
             // 
             // label1
@@ -101,26 +102,29 @@
             // 
             // txtKeyType
             // 
+            this.txtKeyType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtKeyType.Location = new System.Drawing.Point(125, 280);
             this.txtKeyType.Name = "txtKeyType";
             this.txtKeyType.ReadOnly = true;
-            this.txtKeyType.Size = new System.Drawing.Size(208, 22);
+            this.txtKeyType.Size = new System.Drawing.Size(208, 27);
             this.txtKeyType.TabIndex = 13;
             // 
             // txtTimestamp
             // 
+            this.txtTimestamp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTimestamp.Location = new System.Drawing.Point(126, 353);
             this.txtTimestamp.Name = "txtTimestamp";
             this.txtTimestamp.ReadOnly = true;
-            this.txtTimestamp.Size = new System.Drawing.Size(208, 22);
+            this.txtTimestamp.Size = new System.Drawing.Size(208, 27);
             this.txtTimestamp.TabIndex = 12;
             // 
             // txtKeyLen
             // 
+            this.txtKeyLen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtKeyLen.Location = new System.Drawing.Point(126, 320);
             this.txtKeyLen.Name = "txtKeyLen";
             this.txtKeyLen.ReadOnly = true;
-            this.txtKeyLen.Size = new System.Drawing.Size(208, 22);
+            this.txtKeyLen.Size = new System.Drawing.Size(208, 27);
             this.txtKeyLen.TabIndex = 11;
             // 
             // label6
@@ -152,6 +156,7 @@
             // 
             // txtKey
             // 
+            this.txtKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtKey.Location = new System.Drawing.Point(19, 176);
             this.txtKey.Multiline = true;
             this.txtKey.Name = "txtKey";
@@ -171,6 +176,7 @@
             // 
             // txtKeyDesc
             // 
+            this.txtKeyDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtKeyDesc.Location = new System.Drawing.Point(18, 90);
             this.txtKeyDesc.Multiline = true;
             this.txtKeyDesc.Name = "txtKeyDesc";
@@ -190,10 +196,11 @@
             // 
             // txtKeyName
             // 
+            this.txtKeyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtKeyName.Location = new System.Drawing.Point(94, 30);
             this.txtKeyName.Name = "txtKeyName";
             this.txtKeyName.ReadOnly = true;
-            this.txtKeyName.Size = new System.Drawing.Size(239, 22);
+            this.txtKeyName.Size = new System.Drawing.Size(239, 27);
             this.txtKeyName.TabIndex = 2;
             // 
             // btnNewSymmKey

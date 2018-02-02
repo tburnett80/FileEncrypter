@@ -57,6 +57,7 @@
             // 
             // txtDesc
             // 
+            this.txtDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDesc.Location = new System.Drawing.Point(26, 91);
             this.txtDesc.MaxLength = 512;
             this.txtDesc.Multiline = true;
@@ -75,10 +76,11 @@
             // 
             // txtName
             // 
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(98, 31);
             this.txtName.MaxLength = 128;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(338, 22);
+            this.txtName.Size = new System.Drawing.Size(338, 27);
             this.txtName.TabIndex = 1;
             // 
             // label1
@@ -92,6 +94,7 @@
             // 
             // txtResult
             // 
+            this.txtResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtResult.Location = new System.Drawing.Point(12, 239);
             this.txtResult.MaxLength = 512;
             this.txtResult.Multiline = true;

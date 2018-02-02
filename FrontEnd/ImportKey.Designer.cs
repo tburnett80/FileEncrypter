@@ -42,8 +42,8 @@
             this.txtKeyName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.txtInKey = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnParse = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
@@ -74,26 +74,29 @@
             // 
             // txtKeyType
             // 
+            this.txtKeyType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtKeyType.Location = new System.Drawing.Point(125, 280);
             this.txtKeyType.Name = "txtKeyType";
             this.txtKeyType.ReadOnly = true;
-            this.txtKeyType.Size = new System.Drawing.Size(208, 22);
+            this.txtKeyType.Size = new System.Drawing.Size(208, 27);
             this.txtKeyType.TabIndex = 13;
             // 
             // txtTimestamp
             // 
+            this.txtTimestamp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTimestamp.Location = new System.Drawing.Point(126, 353);
             this.txtTimestamp.Name = "txtTimestamp";
             this.txtTimestamp.ReadOnly = true;
-            this.txtTimestamp.Size = new System.Drawing.Size(208, 22);
+            this.txtTimestamp.Size = new System.Drawing.Size(208, 27);
             this.txtTimestamp.TabIndex = 12;
             // 
             // txtKeyLen
             // 
+            this.txtKeyLen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtKeyLen.Location = new System.Drawing.Point(126, 320);
             this.txtKeyLen.Name = "txtKeyLen";
             this.txtKeyLen.ReadOnly = true;
-            this.txtKeyLen.Size = new System.Drawing.Size(208, 22);
+            this.txtKeyLen.Size = new System.Drawing.Size(208, 27);
             this.txtKeyLen.TabIndex = 11;
             // 
             // label6
@@ -125,6 +128,7 @@
             // 
             // txtKey
             // 
+            this.txtKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtKey.Location = new System.Drawing.Point(19, 176);
             this.txtKey.Multiline = true;
             this.txtKey.Name = "txtKey";
@@ -144,6 +148,7 @@
             // 
             // txtKeyDesc
             // 
+            this.txtKeyDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtKeyDesc.Location = new System.Drawing.Point(18, 90);
             this.txtKeyDesc.Multiline = true;
             this.txtKeyDesc.Name = "txtKeyDesc";
@@ -163,10 +168,11 @@
             // 
             // txtKeyName
             // 
+            this.txtKeyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtKeyName.Location = new System.Drawing.Point(94, 30);
             this.txtKeyName.Name = "txtKeyName";
             this.txtKeyName.ReadOnly = true;
-            this.txtKeyName.Size = new System.Drawing.Size(239, 22);
+            this.txtKeyName.Size = new System.Drawing.Size(239, 27);
             this.txtKeyName.TabIndex = 2;
             // 
             // label1
@@ -189,6 +195,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Key Importing";
             // 
+            // txtInKey
+            // 
+            this.txtInKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInKey.Location = new System.Drawing.Point(6, 53);
+            this.txtInKey.Multiline = true;
+            this.txtInKey.Name = "txtInKey";
+            this.txtInKey.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtInKey.Size = new System.Drawing.Size(402, 281);
+            this.txtInKey.TabIndex = 1;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -197,15 +213,6 @@
             this.label7.Size = new System.Drawing.Size(123, 17);
             this.label7.TabIndex = 0;
             this.label7.Text = "Incoming Key Text";
-            // 
-            // txtInKey
-            // 
-            this.txtInKey.Location = new System.Drawing.Point(6, 53);
-            this.txtInKey.Multiline = true;
-            this.txtInKey.Name = "txtInKey";
-            this.txtInKey.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtInKey.Size = new System.Drawing.Size(402, 281);
-            this.txtInKey.TabIndex = 1;
             // 
             // btnParse
             // 
